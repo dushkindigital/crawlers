@@ -127,35 +127,6 @@ public class AmazonCrawler implements MarketplaceCrawler {
 		getAmazonCategories(rootNodeIds, crawlingContext, amazonCrawlingHelper,
 				amazonCategories);
 
-		// List<AmazonCategoryHelper> categoryHelpers = getCategoryHelpers(
-		// rootNodeIds, crawlingContext);
-		//
-		// if (categoryHelpers != null) {
-		// for (AmazonCategoryHelper ch : categoryHelpers) {
-		// AmazonCategory category = ch.getCategory();
-		// amazonCategories.add(category);
-		//
-		// List<AmazonCategory> children = ch.getChildren();
-		// List<Long> nodeIds = getNodeIds(children);
-		// if (nodeIds != null && nodeIds.size() > 0) {
-		// List<AmazonCategoryHelper> categoryHelpers =
-		// getCategoryHelpers(nodeIds, crawlingContext);
-		// }
-		// }
-		// }
-
-		// List<AmazonCategory> topLevelCategories =
-		// getTopLevelCategories(crawlingContext);
-		//
-		// updateAmazonCategories(topLevelCategories, crawlingContext);
-		// amazonCrawlingHelper.addTopLevelCategories(topLevelCategories,
-		// crawlingContext);
-		//
-		// getChildCategories(topLevelCategories, // gson,
-		// crawlingContext, amazonCrawlingHelper);
-		//
-		// amazonCategories = amazonCrawlingHelper.getCategories();
-
 		return amazonCategories;
 	}
 
@@ -250,97 +221,6 @@ public class AmazonCrawler implements MarketplaceCrawler {
 		return nodeIds;
 	}
 
-	private void getChildCategories(List<AmazonCategory> parentCategories,
-			// Gson gson,
-			CrawlingContext crawlingContext,
-			AmazonCrawlingHelper amazonCrawlingHelper) throws IOException {
-
-		if (parentCategories != null) {
-
-			for (AmazonCategory parentCategory : parentCategories) {
-				updateAmazonCategory(parentCategory, crawlingContext);
-
-				// ClientResource cr = new ClientResource(categoriesUrl + "/"
-				// + parentCategory.getCategoryName() + "?api_key="
-				// + apiKey);
-				//
-				// String jsonResponse = getJsonResponse(cr,
-				// amazonCrawlingHelper);
-				// EtsyCategoryResponse childrenCategoryResponse =
-				// gson.fromJson(
-				// jsonResponse, EtsyCategoryResponse.class);
-				//
-				// logger.debug("Gson etsy category response: "
-				// + childrenCategoryResponse.toString());
-
-				// List<AmazonCategory> childrenCategories =
-				// childrenCategoryResponse
-				// .getResults();
-				//
-				// if (childrenCategories != null) {
-				// for (AmazonCategory childCategory : childrenCategories) {
-				// logger.debug("Adding category: " + childCategory);
-				//
-				// updateAmazonCategory(childCategory, crawlingContext);
-				//
-				// amazonCrawlingHelper.addCategory(childCategory,
-				// parentCategory, crawlingContext);
-				//
-				// if (childCategory.getNumChildren() > 0) {
-				//
-				// logger.debug("Getting children for category: "
-				// + childCategory);
-				// getChildCategories(
-				// Arrays.asList(new AmazonCategory[] { childCategory }),
-				// // gson,
-				// crawlingContext, amazonCrawlingHelper);
-				// }
-				// }
-				// }
-			}
-		}
-	}
-
-	private void updateAmazonCategories(List<AmazonCategory> amazonCategories,
-			CrawlingContext crawlingContext) {
-		if (amazonCategories != null) {
-			for (AmazonCategory ac : amazonCategories) {
-				updateAmazonCategory(ac, crawlingContext);
-			}
-		}
-	}
-
-	private void updateAmazonCategory(AmazonCategory amazonCategory,
-			CrawlingContext crawlingContext) {
-
-		// String categoryName = amazonCategory.getCategoryName();
-		// String amazonCategoryId = categoryName;
-		//
-		// if (logger.isDebugEnabled()) {
-		// logger.debug("Category id [" + amazonCategoryId
-		// + "], category name [" + categoryName + "]");
-		// }
-		//
-		// Long liberecoId = amazonCategory.getId();
-		//
-		// if (liberecoId == null) {
-		// liberecoId = crawlingContext.getNextLibrecoId();
-		// amazonCategory.setId(liberecoId);
-		//
-		// if (logger.isDebugEnabled()) {
-		// logger.debug("Setting libereco id [" + liberecoId
-		// + "], category id [" + amazonCategoryId
-		// + "], category name [" + categoryName + "]");
-		// }
-		// }
-		//
-		// amazonCategory.setMarketplaceCategoryId(amazonCategoryId);
-		// amazonCategory.setName(categoryName);
-		//
-		// crawlingContext.addCategoryIdLiberecoMapping(amazonCategoryId,
-		// liberecoId);
-	}
-
 	List<AmazonCategory> getTopLevelCategories(CrawlingContext crawlingContext)
 			throws InvalidKeyException, IllegalArgumentException,
 			NoSuchAlgorithmException, JAXBException,
@@ -364,21 +244,6 @@ public class AmazonCrawler implements MarketplaceCrawler {
 
 		return topCategories;
 	}
-
-	// private void getBrowseNodes(List<Long> rootNodeIds)
-	// throws InvalidKeyException, IllegalArgumentException,
-	// NoSuchAlgorithmException, JAXBException,
-	// ParserConfigurationException, SAXException, IOException {
-	// // Long[] rootNodeIds = { 1036682, 15690151, 11055981, 1000, 301668,
-	// // 195208011, 130, 493964 };
-	//
-	// SignedRequestsHelper helper = SignedRequestsHelper.getInstance(
-	// endpoint, awsAccessKeyId, awsSecretKey);
-	//
-	// for (Long rid : rootNodeIds) {
-	// getBrowseNode(rid, helper);
-	// }
-	// }
 
 	private List<AmazonCategoryHelper> getCategoryHelpers(List<Long> nodeIds,
 			CrawlingContext crawlingContext,
