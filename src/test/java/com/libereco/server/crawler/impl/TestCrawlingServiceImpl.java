@@ -22,7 +22,7 @@ public class TestCrawlingServiceImpl extends TestCase {
 	
 	/*
 	static{
-        String[] paths = {"TEST-libereco-applicationContext.xml"};
+        String[] paths = {"TEST-liberecoCrawlers-applicationContext.xml"};
         ctx = new ClassPathXmlApplicationContext(paths);
         testData = (TestData) ctx.getBean("testData");
         testData.setCtx(ctx);
@@ -34,8 +34,8 @@ public class TestCrawlingServiceImpl extends TestCase {
 	 */
 	protected void setUp() throws Exception {
 		//super.setUp();
-		//String[] paths = {"TEST-libereco-applicationContext.xml"};
-		String[] paths = {"libereco-applicationContext.xml"};
+		//String[] paths = {"TEST-liberecoCrawlers-applicationContext.xml"};
+		String[] paths = {"liberecoCrawlers-applicationContext.xml"};
         ctx = new ClassPathXmlApplicationContext(paths);
 	}
 
