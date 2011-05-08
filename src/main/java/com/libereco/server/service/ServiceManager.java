@@ -29,7 +29,7 @@ public class ServiceManager {
 	private static ClassPathXmlApplicationContext ctx = null;
 
 	static {
-		paths = new String[] { "libereco-applicationContext.xml" };
+		paths = new String[] { "liberecoCrawlers-applicationContext.xml" };
 		ctx = new ClassPathXmlApplicationContext(paths);
 
 		// BeanFactoryLocator bfl = SingletonBeanFactoryLocator.getInstance();

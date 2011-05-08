@@ -20,7 +20,7 @@ public class LiberecoLauncher {
 	public static void main(final String[] args) {
 		
 		// TODO: Add parsing of command line to allow for passing of alternate context
-		final String[] paths = { "libereco-applicationContext.xml"};
+		final String[] paths = { "liberecoCrawlers-applicationContext.xml"};
 		
 		Thread appThread = new Thread(new Runnable() {
 			public void run() {

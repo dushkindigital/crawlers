@@ -19,7 +19,7 @@
     <!-- Configuration properties -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">
-            <value>classpath:libereco.properties</value>
+            <value>classpath:liberecoCrawlers.properties</value>
         </property>
     </bean>
 
